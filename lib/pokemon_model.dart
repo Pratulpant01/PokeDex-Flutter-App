@@ -3,6 +3,9 @@ class PokemonModel {
   final String name;
   final int id;
   final String? url;
+
+  String get imageUrl =>
+      'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/$id.png';
   PokemonModel({
     required this.name,
     this.id = 0,
