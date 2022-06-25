@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:pokedex/api.dart';
-import 'package:pokedex/pokemon_model.dart';
+import 'package:pokedex/data/api.dart';
+import 'package:pokedex/data/pokemon_model.dart';
 
 part 'pokemon_event.dart';
 part 'pokemon_state.dart';

@@ -1,7 +1,11 @@
 import 'dart:convert';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:pokedex/pokemon_model.dart';
+import 'package:pokedex/data/pokemon_info_response.dart';
+import 'package:pokedex/data/pokemon_model.dart';
+import 'package:pokedex/data/pokemon_species.dart';
 
 class ApiService {
   final baseurl = 'pokeapi.co';
@@ -17,6 +21,21 @@ class ApiService {
     final response = await http.Client().get(uri);
     final json = jsonDecode(response.body);
     return PokemonPageResponse.fromJson(json);
+  }
+
+  Future<PokemonInfoResponse> getPokemonInfo(int pokemonId) async {
+    final uri = Uri.https(baseurl, '/api/v2/pokemon/$pokemonId');
+    final response = await http.Client().get(uri);
+    final json = jsonDecode(response.body);
+    return PokemonInfoResponse.fromJson(json);
+  }
+
+  Future<PokemonSpeciesInfoResponse> getPokemonSpeciesInfo(
+      int pokemonId) async {
+    final uri = Uri.https(baseurl, '/api/v2/pokemon-species/$pokemonId');
+    final response = await http.Client().get(uri);
+    final json = jsonDecode(response.body);
+    return PokemonSpeciesInfoResponse.fromJson(json);
   }
 }
 
